@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Data</title>
+</head>
+<body>
+    <h2>Display Students</h2>
+    <a href="{% url 'home' %}">Home</a>
+    
+    <h2>Student Data</h2>
+    <form method="get" action="{% url 'get_students' %}">
+        <label for="class_filter">Filter by Class:</label>
+        <input type="text" id="class_filter" name="class_name" value="{{ class_name }}">
+        <input type="submit" value="Apply Class Filter">
+    </form>
+    <br><br>
+    <form method="get" action="{% url 'get_students' %}">
+        <label for="name_filter">Filter by Name:</label>
+        <input type="text" id="name_filter" name="name" value="{{ name }}">
+        <input type="submit" value="Apply Name Filter">
+    </form>
+    
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Roll No</th>
+            <th>Subject 1</th>
+            <th>Subject 2</th>
+            <th>Subject 3</th>
+            <th>Subject 4</th>
+            <th>Subject 5</th>
+            <th>Score 1</th>
+            <th>Score 2</th>
+            <th>Score 3</th>
+            <th>Score 4</th>
+            <th>Score 5</th>
+            <th>Total Score</th>
+            <th>Class</th>
+            <th>Image</th>
+        </tr>
+        {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.roll_no }}</td>
+                <td>{{ student.subject1 }}</td>
+                <td>{{ student.subject2 }}</td>
+                <td>{{ student.subject3 }}</td>
+                <td>{{ student.subject4 }}</td>
+                <td>{{ student.subject5 }}</td>
+                <td>{{ student.score1 }}</td>
+                <td>{{ student.score2 }}</td>
+                <td>{{ student.score3 }}</td>
+                <td>{{ student.score4 }}</td>
+                <td>{{ student.score5 }}</td>
+                <td>{{ student.total_score }}</td>
+                <td>{{ student.class_name }}</td>
+                <td><img src="{{ student.image.url }}" alt="{{ student.name }} Image" style="width:100px;height:100px;"></td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
