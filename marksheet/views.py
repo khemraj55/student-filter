@@ -32,7 +32,7 @@ def create_student(request):
         return render(request, 'create_student.html')
 
 
-@login_required
+# @login_required
 @api_view(['GET'])
 def get_students(request):
     class_name = request.GET.get('class_name')
@@ -75,7 +75,7 @@ def get_students(request):
     return render(request, 'student_data.html', context)
 
 
-@login_required
+# @login_required
 def display_students(request):
     students = Student.objects.annotate(total_score=F(
         'score1') + F('score2') + F('score3') + F('score4') + F('score5')).order_by('-total_score')

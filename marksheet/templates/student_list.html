@@ -22,6 +22,7 @@
             <th>Score 5</th>
             <th>Total Score</th>
             <th>Class</th>
+            <th>Image</th>
         </tr>
         {% for student in students %}
             <tr>
@@ -40,6 +41,8 @@
                 <td>{{ student.score5 }}</td>
                 <td>{{ student.total_score }}</td>
                 <td>{{ student.class_name }}</td>
+                <td><img src="{{ MEDIA_URL }}{{ student.image.url }}" alt="{{ student.name }} Image" style="width:100px;height:100px;"></td>
+        </tr>
             </tr>
         {% endfor %}
     </table>
